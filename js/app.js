@@ -14,4 +14,10 @@ $(document).ready(function(){
 
 });
 
+var newGame = function(){
+};
+var computerGuess = function(){
+  Math.floor((Math.random() * 100) + 1);
+};
+
 
