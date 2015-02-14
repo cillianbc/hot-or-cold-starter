@@ -19,5 +19,5 @@ var newGame = function(){
 var computerGuess = function(){
   Math.floor((Math.random() * 100) + 1);
 };
-
+var userGuess = document.getElementById("userGuess").value;
 
