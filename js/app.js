@@ -29,6 +29,13 @@ $(document).ready(function(){
     $("#userGuess").attr("placeholder", "Enter your Guess").val('');
   };
 
+  function entryCheck(guess){
+    if(isNaN(guess)){
+      alert("Numbers Only");
+      Game();
+    };
+  };
+
   function numbGuess(count){
     $('#count').text(count);
   };
@@ -46,16 +53,15 @@ $(document).ready(function(){
     newGame();
     var userGuess = $('#userGuess').val();
     var guessdiff = Math.abs(computerGuess - userGuess);
+    entryCheck(userGuess);
 
     if (guessdiff === 0){
       feedback("Correct");
-
       guessAmount(userGuess);
     }
 
     else if (guessdiff <10){
       feedback("Getting Warm");
-
       guessAmount(userGuess);
       numbGuess(count);
       count++;
@@ -65,14 +71,13 @@ $(document).ready(function(){
       feedback("Freezing");
       guessAmount(userGuess);
       numbGuess(count);
-
       count++;
     }
   };
 
   $("form").submit(function(event){
-  game()
-  cleartext();
+    game()
+    cleartext();
   });
 
 });
