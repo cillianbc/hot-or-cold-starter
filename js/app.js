@@ -12,6 +12,9 @@ $(document).ready(function(){
     $(".overlay").fadeOut(1000);
   });
 
+
+  var count = 1;
+
   function newGame(){
     $('.new').click(function(){
       $('#count').text('0');
@@ -20,10 +23,6 @@ $(document).ready(function(){
     });
   };
 
-    /*--- Function to create randomly generated number ---*/
-  var computerGuess = Math.floor((Math.random() * 100) + 1);
-
-  var count = 1;
   /*--- user guess variable that takes value from input box ---*/
   function cleartext(){
     $("#userGuess").attr("placeholder", "Enter your Guess").val('');
@@ -36,6 +35,8 @@ $(document).ready(function(){
     };
   };
 
+
+
   function numbGuess(count){
     $('#count').text(count);
   };
@@ -47,10 +48,13 @@ $(document).ready(function(){
   function feedback(guessText){
     $('#feedback').text(guessText);
   };
-
+  function computerGuess(){
+    Math.floor((Math.random() * 100) + 1);
+  };
   function game(guessdiff){
     event.preventDefault();
     newGame();
+    computerGuess();
     var userGuess = $('#userGuess').val();
     var guessdiff = Math.abs(computerGuess - userGuess);
     entryCheck(userGuess);
@@ -58,6 +62,7 @@ $(document).ready(function(){
     if (guessdiff === 0){
       feedback("Correct");
       guessAmount(userGuess);
+      newGame();
     }
 
     else if (guessdiff <10){
