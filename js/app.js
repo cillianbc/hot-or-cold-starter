@@ -48,16 +48,16 @@ $(document).ready(function(){
   function feedback(guessText){
     $('#feedback').text(guessText);
   };
-  function computerGuess(){
-    Math.floor((Math.random() * 100) + 1);
-  };
-  function game(guessdiff){
+  var computerGuess = Math.floor((Math.random() * 100) + 1);
+
+  function game(){
     event.preventDefault();
     newGame();
-    computerGuess();
+    computerGuess;
     var userGuess = $('#userGuess').val();
     var guessdiff = Math.abs(computerGuess - userGuess);
     entryCheck(userGuess);
+    console.log(computerGuess);
 
     if (guessdiff === 0){
       feedback("Correct");
